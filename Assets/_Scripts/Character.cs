@@ -4,13 +4,37 @@ using UnityEngine;
 
 public class Character : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    [SerializeField]
+    private float maxHealth;
+    [SerializeField]
+    private float damage;
+    [SerializeField]
+    private float speed;
+
+    private float curHealth;
+
+    public void Start()
+    {
+        curHealth = maxHealth;
+    }
+
+    public void Update()
+    {
+        StartMove();
+    }
+
+    private void GetDamage(float d)
+    {
+        curHealth -= d;
+        if(curHealth <= 0)
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    private void StartMove()
+    {
+        transform.Translate(Vector3.right * speed * Time.deltaTime);
+    }
+
 }
