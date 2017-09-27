@@ -1,1 +1,1 @@
-# CryptoWars
+CryptoWars
