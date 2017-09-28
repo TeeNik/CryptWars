@@ -18,8 +18,7 @@ public class SpawnButton : MonoBehaviour {
         switch (type)
         {
             case GameInfo.CharacterType.Warrior:
-                
-
+                var r = ResourceManager.getCharacter("Warrior");
                 break;
         }
     }
