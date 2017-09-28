@@ -7,6 +7,9 @@ public class ResourceManager : MonoBehaviour {
     [SerializeField]
     private GameObject[] characters;
 
+    [SerializeField]
+    private Transform spawnPosition;
+
     private static ResourceManager inst;
 
     private void Start()
@@ -19,8 +22,12 @@ public class ResourceManager : MonoBehaviour {
         return Get(Name + " (UnityEngine.GameObject)", inst.characters);
     }
 
+    public static Transform getSpawnPosition()
+    {
+        return inst.spawnPosition;
+    }
+
     public static T Get<T>(string Name, T[] Array){
-        print(Name);
         for (int i = 0; i < Array.Length; i++)
         {
             if (Array[i].ToString() == Name)

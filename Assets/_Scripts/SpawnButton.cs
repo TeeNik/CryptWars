@@ -18,7 +18,7 @@ public class SpawnButton : MonoBehaviour {
         switch (type)
         {
             case GameInfo.CharacterType.Warrior:
-                var r = ResourceManager.getCharacter("Warrior");
+                Instantiate(ResourceManager.getCharacter("Warrior"), ResourceManager.getSpawnPosition().position, ResourceManager.getSpawnPosition().rotation);
                 break;
         }
     }
