@@ -20,7 +20,7 @@ public class Character : MonoBehaviour {
 
     public void Update()
     {
-        StartMove();
+        //StartMove();
     }
 
     private void GetDamage(float d)
