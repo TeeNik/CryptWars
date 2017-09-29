@@ -8,7 +8,7 @@ public class EnemySight : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == "Player")
+        if (other.tag == "Enemy")
         {
             enemy.target = other.gameObject;
         }
@@ -16,7 +16,7 @@ public class EnemySight : MonoBehaviour {
 
     void OnTriggerExit2D(Collider2D other)
     {
-        if (other.tag == "Player")
+        if (other.tag == "Enemy")
         {
             enemy.target = null;
         }

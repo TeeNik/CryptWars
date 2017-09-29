@@ -8,19 +8,12 @@ public class Character : MonoBehaviour {
     private float maxHealth;
     [SerializeField]
     private float damage;
-    [SerializeField]
-    private float speed;
 
     private float curHealth;
 
     public void Start()
     {
         curHealth = maxHealth;
-    }
-
-    public void Update()
-    {
-        //StartMove();
     }
 
     private void GetDamage(float d)
@@ -30,11 +23,6 @@ public class Character : MonoBehaviour {
         {
             Destroy(gameObject);
         }
-    }
-
-    private void StartMove()
-    {
-        transform.Translate(Vector3.right * speed * Time.deltaTime);
     }
 
 }

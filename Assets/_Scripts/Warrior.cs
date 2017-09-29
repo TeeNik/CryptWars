@@ -8,7 +8,4 @@ public class Warrior : Character {
         base.Start();
 	}
 	
-	void Update () {
-        base.Update();
-	}
 }
