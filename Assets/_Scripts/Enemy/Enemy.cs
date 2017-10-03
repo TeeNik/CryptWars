@@ -63,7 +63,7 @@ public class Enemy : MonoBehaviour {
 
     public void Move()
     {
-        //GetComponent<Animator>().SetBool("isWalking", true);
+        GetComponent<Animator>().SetBool("walking", true);
 
         GetComponent<Rigidbody2D>().velocity = GetDirection() * speed;
     }

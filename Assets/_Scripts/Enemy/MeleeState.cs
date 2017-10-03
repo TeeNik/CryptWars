@@ -50,8 +50,8 @@ public class MeleeState : IEnemyState
         if(canAttack)
         {
             canAttack = false;
-            /*enemy.GetComponent<Animator>().SetBool("isWalking", false);
-            enemy.GetComponent<Animator>().SetTrigger("attack");*/
+            enemy.GetComponent<Animator>().SetBool("attack", true);
+            /*enemy.GetComponent<Animator>().SetTrigger("attack");*/
             
         }
     }
