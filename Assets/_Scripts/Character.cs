@@ -19,7 +19,6 @@ public class Character : MonoBehaviour {
 
     public void GetDamage(float d)
     {
-        print(d);
         curHealth -= d;
         if(curHealth <= 0)
         {

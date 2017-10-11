@@ -19,7 +19,6 @@ public class MeleeState : IEnemyState
     public void Execute()
     {
         Attack();
-        Debug.Log(!enemy.inMeleeRange);
         if(!enemy.inMeleeRange)
         {
             enemy.ChangeState(new MoveState());
