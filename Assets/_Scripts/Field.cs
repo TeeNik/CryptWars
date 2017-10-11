@@ -1,18 +1,21 @@
 ﻿using UnityEngine;
-using static GameInfo;
 
 public class Field : MonoBehaviour {
 
     [SerializeField]
-    GameObject spawnPoint;
+    Transform spawnPoint;
 
     private void OnMouseDown()
     {
-        print("click");
+        if (GameInfo.isSpawn)
+        {
+            Spawn(GameInfo.spawnType);
+            GameInfo.isSpawn = false;
+        }
     }
 
-    void Spawn(CharacterType type)
+    void Spawn(GameInfo.CharacterType type)
     {
-
+        Instantiate(ResourceManager.getCharacter("Warrior"), spawnPoint.position, spawnPoint.rotation);
     }
 }

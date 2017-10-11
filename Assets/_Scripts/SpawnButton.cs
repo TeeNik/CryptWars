@@ -15,11 +15,12 @@ public class SpawnButton : MonoBehaviour {
 
     public void OnClick()
     {
-        switch (type)
+        GameInfo.isSpawn = true;
+        /*switch (type)
         {
             case GameInfo.CharacterType.Warrior:
                 Instantiate(ResourceManager.getCharacter("Warrior"), ResourceManager.getSpawnPosition().position, ResourceManager.getSpawnPosition().rotation);
                 break;
-        }
+        }*/
     }
 }
