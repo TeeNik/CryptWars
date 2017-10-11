@@ -9,6 +9,7 @@ public class Character : MonoBehaviour {
     [SerializeField]
     private float damage;
 
+    [SerializeField]
     private float curHealth;
 
     public void Start()
@@ -16,8 +17,9 @@ public class Character : MonoBehaviour {
         curHealth = maxHealth;
     }
 
-    private void GetDamage(float d)
+    public void GetDamage(float d)
     {
+        print(d);
         curHealth -= d;
         if(curHealth <= 0)
         {

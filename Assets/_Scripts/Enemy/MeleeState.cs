@@ -6,7 +6,7 @@ public class MeleeState : IEnemyState
 {
 
     float attackTimer;
-    float attackCoolDown = 3;
+    public float attackCoolDown = 1.5f;
     bool canAttack = true;
 
     private Enemy enemy;
@@ -19,6 +19,7 @@ public class MeleeState : IEnemyState
     public void Execute()
     {
         Attack();
+        Debug.Log(!enemy.inMeleeRange);
         if(!enemy.inMeleeRange)
         {
             enemy.ChangeState(new MoveState());
@@ -51,6 +52,7 @@ public class MeleeState : IEnemyState
         {
             canAttack = false;
             enemy.GetComponent<Animator>().SetBool("attack", true);
+            enemy.target.gameObject.GetComponent<Character>().GetDamage(enemy.damage);
             /*enemy.GetComponent<Animator>().SetTrigger("attack");*/
             
         }

@@ -18,6 +18,7 @@ public class EnemySight : MonoBehaviour {
     {
         if (other.tag == "Enemy")
         {
+            print("Exit");
             enemy.target = null;
         }
     }

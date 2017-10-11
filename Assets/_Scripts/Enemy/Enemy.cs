@@ -4,13 +4,9 @@ using System.Collections;
 public class Enemy : MonoBehaviour {
 
     private IEnemyState currentState;
-
     public GameObject target { get; set; }
-
     public float meleeRange = 3;
-
-    public float idleDuration;
-    public float patrolDuration;
+    public float damage;
 
     public bool inMeleeRange
     {

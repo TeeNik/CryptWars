@@ -12,6 +12,8 @@ public class MoveState : IEnemyState
     public void Enter(Enemy enemy)
     {
         this.enemy = enemy;
+        enemy.GetComponent<Animator>().SetBool("attack", false);
+        enemy.GetComponent<Animator>().SetBool("walking", true);
     }
 
     public void Execute()
