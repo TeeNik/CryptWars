@@ -18,7 +18,12 @@ public class IdleState : IEnemyState
 
     public void Execute()
     {
+        if (enemy.target == null)
+            enemy.ChangeState(new MoveState());
+
         Idle();
+
+
     }
 
     public void Exit()
@@ -35,6 +40,6 @@ public class IdleState : IEnemyState
     {
         enemy.gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
 
-        enemy.GetComponent<Animator>().SetBool("isWalking", false);
+        enemy.GetComponent<Animator>().SetBool("walking", false);
     }
 }
