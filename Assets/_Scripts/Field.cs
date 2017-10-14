@@ -16,6 +16,6 @@ public class Field : MonoBehaviour {
 
     void Spawn(GameInfo.CharacterType type)
     {
-        Instantiate(ResourceManager.getCharacter("Warrior"), spawnPoint.position, spawnPoint.rotation);
+        Instantiate(ResourceManager.getCharacter("Goblin"), spawnPoint.position, spawnPoint.rotation);
     }
 }
