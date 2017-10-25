@@ -10,14 +10,28 @@ public class NetworkManager : MonoBehaviour, WebSocketUnityDelegate {
     private Decoder decoder;
     public Action<string, JSONObject> responceEvent;
 
+    public void Awake()
+    {
+        instance = this;
+        instance.Connect();
+    }
+
     public void Connect()
     {
         NetworkHandler.Init(this);
-        webSocket = new WebSocketUnity("localhost/socket.io/?EIO=4&transport=websocket", this);
+        webSocket = new WebSocketUnity("ws://localhost:3735/socket.io/?EIO=4&transport=websocket", this);
         webSocket.Open();
+        /*Debug.Log(webSocket.IsOpened());
+        TestObject test = new TestObject();
+        test.str = "123123123";
+        instance.Send("test", new JSONObject(test.GetJson()));*/
+        //Debug.Log("Connect");
     }
 
-
+    public void Send(string eventName, JSONObject data)
+    {
+        webSocket.Send(eventName, data);
+    }
 
     public void OnWebSocketUnityClose(string reason)
     {

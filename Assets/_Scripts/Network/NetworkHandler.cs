@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,7 +11,6 @@ public class ResponseObject
 
 public class NetworkHandler{
 
-    
 
     private static NetworkManager networkManager;
     private static List<ResponseObject> responseObjects = new List<ResponseObject>();
@@ -27,10 +27,10 @@ public class NetworkHandler{
         {
             if (responseObjects[i] != null)
             {
-                NetworkCommands eventType = responseObjects[i].eventName.ToEnum<NetworkCommands>();
-                switch (eventType)
+                //NetworkCommands eventType = responseObjects[i].eventName.ToEnum<NetworkCommands>();
+                switch (responseObjects[i].eventName)
                 {
-                    case NetworkCommands.test:
+                    case "test":
                         Debug.Log("socket is here");
                         break;
                 }
@@ -50,5 +50,10 @@ public class NetworkHandler{
                 jsonObject = _jsonObject
             }
         );
+    }
+
+    public static T ToEnum<T>(string value)
+    {
+        return (T)Enum.Parse(typeof(T), value, true);
     }
 }
