@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
+using UnityEngine.Networking;
 
-public class Field : MonoBehaviour {
+public class Field : NetworkBehaviour
+{
 
     [SerializeField]
     Transform spawnPoint;
@@ -9,13 +11,15 @@ public class Field : MonoBehaviour {
     {
         if (GameInfo.isSpawn)
         {
-            Spawn(GameInfo.spawnType);
+            CmdSpawn(GameInfo.spawnType);
             GameInfo.isSpawn = false;
         }
     }
 
-    void Spawn(GameInfo.CharacterType type)
+    [Command]
+    void CmdSpawn(GameInfo.CharacterType type)
     {
-        Instantiate(ResourceManager.getCharacter("Goblin"), spawnPoint.position, spawnPoint.rotation);
+        var clone = (GameObject)Instantiate(ResourceManager.getCharacter("Goblin"), spawnPoint.position, spawnPoint.rotation);
+        NetworkServer.Spawn(clone);
     }
 }

@@ -16,6 +16,8 @@ public class SpawnButton : MonoBehaviour {
     public void OnClick()
     {
         GameInfo.isSpawn = true;
+        GameInfo.spawnType = GetComponent<SpawnButton>().type;
+        Debug.Log("clicked");
         /*switch (type)
         {
             case GameInfo.CharacterType.Warrior:
