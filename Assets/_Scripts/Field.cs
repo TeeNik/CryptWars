@@ -19,7 +19,7 @@ public class Field : NetworkBehaviour
     [Command]
     void CmdSpawn(GameInfo.CharacterType type)
     {
-        var clone = (GameObject)Instantiate(ResourceManager.getCharacter("Goblin"), spawnPoint.position, spawnPoint.rotation);
+        var clone = (GameObject)Instantiate(ResourceManager.getCharacter(type.ToString()), spawnPoint.position, spawnPoint.rotation);
         NetworkServer.Spawn(clone);
     }
 }

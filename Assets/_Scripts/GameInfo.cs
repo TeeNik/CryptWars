@@ -9,6 +9,11 @@ public static class GameInfo {
 
 	public enum CharacterType
     {
-        Warrior
+        Goblin,
+        Ranger,
+        Cleric,
+        Skeleton,
+        Golem,
+        Wizard
     }
 }
