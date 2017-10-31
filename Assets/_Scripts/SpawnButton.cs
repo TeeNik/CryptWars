@@ -15,14 +15,15 @@ public class SpawnButton : MonoBehaviour {
 
     public void OnClick()
     {
-        GameInfo.isSpawn = true;
-        GameInfo.spawnType = GetComponent<SpawnButton>().type;
-        Debug.Log("clicked");
-        /*switch (type)
+        var localType = GetComponent<SpawnButton>().type;
+        if (GameInfo.isSpawn && GameInfo.spawnType == localType)
         {
-            case GameInfo.CharacterType.Warrior:
-                Instantiate(ResourceManager.getCharacter("Warrior"), ResourceManager.getSpawnPosition().position, ResourceManager.getSpawnPosition().rotation);
-                break;
-        }*/
+            GameInfo.isSpawn = false;
+        }
+        else
+        {
+            GameInfo.isSpawn = true;
+            GameInfo.spawnType = localType;
+        }
     }
 }
