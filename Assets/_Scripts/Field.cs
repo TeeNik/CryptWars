@@ -7,19 +7,23 @@ public class Field : NetworkBehaviour
     [SerializeField]
     Transform spawnPoint;
 
+    public delegate void SpawnFromPlayer(GameObject clone);
+    public static event SpawnFromPlayer Spawn;
+
     private void OnMouseDown()
     {
         if (GameInfo.isSpawn)
         {
-            CmdSpawn(GameInfo.spawnType);
+            Spawn(CreateObject(GameInfo.spawnType));
             GameInfo.isSpawn = false;
         }
     }
 
-    [Command]
-    void CmdSpawn(GameInfo.CharacterType type)
+    
+
+    GameObject CreateObject(GameInfo.CharacterType type)
     {
         var clone = (GameObject)Instantiate(ResourceManager.getCharacter(type.ToString()), spawnPoint.position, spawnPoint.rotation);
-        NetworkServer.Spawn(clone);
+        return clone;
     }
 }
