@@ -7,6 +7,8 @@ public class Enemy : MonoBehaviour {
     public GameObject target { get; set; }
     public float meleeRange = 3;
     public float damage;
+    public bool facingRight = true;
+    public float speed;
 
     public bool inMeleeRange
     {
@@ -20,8 +22,7 @@ public class Enemy : MonoBehaviour {
         }
     }
 
-    public bool facingRight = true;
-    public float speed;
+    
 
     void Start()
     {

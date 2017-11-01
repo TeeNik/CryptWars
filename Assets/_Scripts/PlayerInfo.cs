@@ -24,7 +24,7 @@ public class PlayerInfo : NetworkBehaviour
     private void Start()
     {
         curHealth = maxHealth-20;
-        Field.Spawn += test;
+        Field.Spawn += CmdSpawnFromPlayer;
     }
 
     private void Update()
@@ -37,28 +37,14 @@ public class PlayerInfo : NetworkBehaviour
     }
 
     [Command]
-    public void CmdSpawnFromPlayer(GameObject ob)
-    {
-        /*if (!isLocalPlayer)
-        {
-            return;
-        }*/
-        print("end");
-        print(ob);
-        NetworkServer.Spawn(ob);
-    }
-
-    public void test(GameObject ob)
+    public void CmdSpawnFromPlayer(EnemySpawnObject ob)
     {
         if (!isLocalPlayer)
         {
             return;
         }
-        print(ob);
-        Instantiate(ob);
-        CmdSpawnFromPlayer(ob);
+        var clone = (GameObject)Instantiate(ResourceManager.getCharacter(ob.type.ToString()), EnemySpawner.getField(ob.field).position, EnemySpawner.getField(ob.field).rotation);
+        clone.GetComponent<Enemy>().ChangeDirection();
+        NetworkServer.Spawn(clone);
     }
-
-
-
 }
