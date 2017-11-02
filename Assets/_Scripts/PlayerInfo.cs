@@ -39,12 +39,25 @@ public class PlayerInfo : NetworkBehaviour
     [Command]
     public void CmdSpawnFromPlayer(EnemySpawnObject ob)
     {
-        if (!isLocalPlayer)
+        if (!isLocalPlayer || isServer)
         {
             return;
         }
+        print(isServer);
         var clone = (GameObject)Instantiate(ResourceManager.getCharacter(ob.type.ToString()), EnemySpawner.getField(ob.field).position, EnemySpawner.getField(ob.field).rotation);
         clone.GetComponent<Enemy>().ChangeDirection();
         NetworkServer.Spawn(clone);
     }
+
+    public void test(EnemySpawnObject ob)
+    {
+        /*if (!isLocalPlayer)
+        {
+            return;
+        }
+        CmdSpawnFromPlayer(ob);*/
+    }
+
+
+
 }
