@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ResourceManager : MonoBehaviour {
 
@@ -10,7 +11,9 @@ public class ResourceManager : MonoBehaviour {
     [SerializeField]
     private Transform spawnPosition;
 
-    private static ResourceManager inst;
+    public Image healthBar;
+
+    public static ResourceManager inst;
 
     private void Start()
     {

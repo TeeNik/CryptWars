@@ -33,7 +33,7 @@ public class PlayerInfo : NetworkBehaviour
         {
             return;
         }
-        //heathBar.fillAmount = curHealth / maxHealth;
+        ResourceManager.inst.healthBar.fillAmount = curHealth / maxHealth;
     }
 
     [Command]
