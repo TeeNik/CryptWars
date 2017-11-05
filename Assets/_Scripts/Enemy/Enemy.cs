@@ -22,8 +22,6 @@ public class Enemy : MonoBehaviour {
         }
     }
 
-    
-
     void Start()
     {
         ChangeState(new MoveState());

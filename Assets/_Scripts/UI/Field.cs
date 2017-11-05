@@ -10,8 +10,8 @@ public class Field : NetworkBehaviour
     [SerializeField]
     private int fieldNumber;
 
-    public delegate void SpawnFromPlayer(EnemySpawnObject clone);
-    public static event SpawnFromPlayer Spawn;
+    
+    
 
     private void OnMouseDown()
     {
@@ -20,7 +20,7 @@ public class Field : NetworkBehaviour
             var clone = (GameObject)Instantiate(ResourceManager.getCharacter(GameInfo.spawnType.ToString()), spawnPoint.position, spawnPoint.rotation);
             EnemySpawnObject en = new EnemySpawnObject(GameInfo.spawnType, fieldNumber);
 
-            Spawn(en);
+            EventHandler.Spawn(en);
             GameInfo.isSpawn = false;
         }
     }

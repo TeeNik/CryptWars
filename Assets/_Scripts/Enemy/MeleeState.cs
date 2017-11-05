@@ -11,6 +11,9 @@ public class MeleeState : IEnemyState
 
     private Enemy enemy;
 
+    public delegate void DamagePlayer(float damage);
+    public static event DamagePlayer AttackPlayer;
+
     public void Enter(Enemy enemy)
     {
         this.enemy = enemy;
@@ -51,9 +54,15 @@ public class MeleeState : IEnemyState
         {
             canAttack = false;
             enemy.GetComponent<Animator>().SetBool("attack", true);
-            enemy.target.gameObject.GetComponent<Character>().GetDamage(enemy.damage);
-            /*enemy.GetComponent<Animator>().SetTrigger("attack");*/
-            
+
+            if(enemy.target.gameObject.tag == "Castle")
+            {
+                AttackPlayer(enemy.damage);
+            }
+            else
+            {
+                enemy.target.gameObject.GetComponent<Character>().GetDamage(enemy.damage);
+            }            
         }
     }
 }

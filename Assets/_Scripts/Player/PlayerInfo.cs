@@ -13,27 +13,18 @@ public class PlayerInfo : NetworkBehaviour
     public GameObject obj;
     public Transform place;
 
-    [SerializeField]
-    float maxHealth;
-
-    [SerializeField]
-    Image heathBar;
-
-    float curHealth;
-
     private void Start()
     {
-        curHealth = maxHealth-20;
         Field.Spawn += CmdSpawnFromPlayer;
     }
 
     private void Update()
     {
-        if (!isLocalPlayer)
+        /*if (!isLocalPlayer)
         {
             return;
-        }
-        ResourceManager.inst.healthBar.fillAmount = curHealth / maxHealth;
+        }*/
+
     }
 
     [Command]

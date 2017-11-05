@@ -1,16 +1,28 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
+using UnityEngine.UI;
 
-public class PlayerHealth : MonoBehaviour {
+public class PlayerHealth : NetworkBehaviour
+{
 
-	// Use this for initialization
-	void Start () {
-		
-	}
+    [SerializeField]
+    float maxHealth;
+
+    float curHealth;
+
+
+
+    void Start () {
+        curHealth = maxHealth - 20;
+    }
 	
-	// Update is called once per frame
 	void Update () {
-		
-	}
+        if (!isLocalPlayer)
+        {
+            return;
+        }
+        ResourceManager.inst.healthBar.fillAmount = curHealth / maxHealth;
+    }
 }
