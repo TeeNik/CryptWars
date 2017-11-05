@@ -10,6 +10,7 @@ public class EnemySight : MonoBehaviour {
     {
         if (other.tag == "Enemy" || other.tag == "Friend" || other.tag == "Castle")
         {
+            print(other);
             enemy.target = other.gameObject;
         }
     }

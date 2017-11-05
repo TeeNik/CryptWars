@@ -11,8 +11,7 @@ public class MeleeState : IEnemyState
 
     private Enemy enemy;
 
-    public delegate void DamagePlayer(float damage);
-    public static event DamagePlayer AttackPlayer;
+    public static event EventHandler.DamagePlayer AttackPlayer;
 
     public void Enter(Enemy enemy)
     {

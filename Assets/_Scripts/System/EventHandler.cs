@@ -2,15 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EventHandler : MonoBehaviour {
+public class EventHandler {
 
+    public delegate void DamagePlayer(float damage);
     public delegate void SpawnFromPlayer(EnemySpawnObject clone);
-    public event SpawnFromPlayer Spawn;
 
-    public EventHandler inst;
-
-    void Start()
-    {
-        inst = this;
-    }
 }

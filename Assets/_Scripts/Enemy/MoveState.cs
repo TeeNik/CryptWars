@@ -20,7 +20,7 @@ public class MoveState : IEnemyState
     {
         enemy.Move();
 
-        if(enemy.target != null && enemy.target.tag == "Enemy" && enemy.inMeleeRange)
+        if(enemy.target != null && (enemy.target.tag == "Enemy" || enemy.target.tag == "Castle") && enemy.inMeleeRange)
         {
             enemy.ChangeState(new MeleeState());
         }

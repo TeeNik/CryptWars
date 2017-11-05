@@ -16,6 +16,7 @@ public class PlayerHealth : NetworkBehaviour
 
     void Start () {
         curHealth = maxHealth - 20;
+        MeleeState.AttackPlayer += TakeDamage;
     }
 	
 	void Update () {
@@ -24,5 +25,10 @@ public class PlayerHealth : NetworkBehaviour
             return;
         }
         ResourceManager.inst.healthBar.fillAmount = curHealth / maxHealth;
+    }
+
+    void TakeDamage(float d)
+    {
+        curHealth -= d;
     }
 }

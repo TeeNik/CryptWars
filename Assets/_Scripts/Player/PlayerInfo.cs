@@ -13,18 +13,12 @@ public class PlayerInfo : NetworkBehaviour
     public GameObject obj;
     public Transform place;
 
+    [SerializeField]
+    private GameInfo.CharacterType[] selectedWarriors;
+
     private void Start()
     {
         Field.Spawn += CmdSpawnFromPlayer;
-    }
-
-    private void Update()
-    {
-        /*if (!isLocalPlayer)
-        {
-            return;
-        }*/
-
     }
 
     [Command]
@@ -40,13 +34,9 @@ public class PlayerInfo : NetworkBehaviour
         NetworkServer.Spawn(clone);
     }
 
-    public void test(EnemySpawnObject ob)
+    public static void SetSelectedWarriors(GameInfo.CharacterType[] arr)
     {
-        /*if (!isLocalPlayer)
-        {
-            return;
-        }
-        CmdSpawnFromPlayer(ob);*/
+
     }
 
 
