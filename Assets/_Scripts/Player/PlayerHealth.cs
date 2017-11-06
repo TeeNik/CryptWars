@@ -6,13 +6,10 @@ using UnityEngine.UI;
 
 public class PlayerHealth : NetworkBehaviour
 {
-
     [SerializeField]
     float maxHealth;
 
     float curHealth;
-
-
 
     void Start () {
         curHealth = maxHealth - 20;
@@ -29,6 +26,7 @@ public class PlayerHealth : NetworkBehaviour
 
     void TakeDamage(float d)
     {
+        print("Damage");
         curHealth -= d;
     }
 }
