@@ -60,7 +60,7 @@ public class MeleeState : IEnemyState
             }
             else
             {
-                enemy.target.gameObject.GetComponent<Character>().GetDamage(enemy.damage);
+                enemy.target.gameObject.GetComponent<Character>().TakeDamage(enemy.damage);
             }            
         }
     }
