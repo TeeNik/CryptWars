@@ -11,6 +11,9 @@ public class PlayerHealth : NetworkBehaviour
 
     float curHealth;
 
+    [SerializeField]
+    private bool player;
+
     void Start () {
         curHealth = maxHealth - 20;
         MeleeState.AttackPlayer += TakeDamage;
@@ -24,9 +27,12 @@ public class PlayerHealth : NetworkBehaviour
         ResourceManager.inst.healthBar.fillAmount = curHealth / maxHealth;
     }
 
-    void TakeDamage(float d)
+    void TakeDamage(float d, bool p)
     {
-        print("Damage");
-        curHealth -= d;
+        if(player == p)
+        {
+            print("Damage");
+            curHealth -= d;
+        }
     }
 }

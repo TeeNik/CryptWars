@@ -81,6 +81,7 @@ public class Enemy : MonoBehaviour {
 
     public void ChangeDirection()
     {
+        print("here");
         facingRight = !facingRight;
         transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
     }

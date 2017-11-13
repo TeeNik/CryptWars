@@ -56,7 +56,7 @@ public class MeleeState : IEnemyState
 
             if(enemy.target.gameObject.tag == "Castle")
             {
-                AttackPlayer(enemy.damage);
+                AttackPlayer(enemy.damage, true);
             }
             else
             {
