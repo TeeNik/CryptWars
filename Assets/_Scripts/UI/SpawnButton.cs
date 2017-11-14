@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class SpawnButton : MonoBehaviour {
 
     [SerializeField]
-    private GameInfo.CharacterType type;
+    private GameInfo.CharacterType type { get; set; }
 
     public void Start()
     {

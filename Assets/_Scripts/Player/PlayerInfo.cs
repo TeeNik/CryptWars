@@ -15,6 +15,7 @@ public class PlayerInfo : NetworkBehaviour
 
     [SerializeField]
     private GameInfo.CharacterType[] selectedWarriors;
+    public static event EventHandler.CreateSpawnButtons csb;
 
     private void Start()
     {
@@ -39,9 +40,6 @@ public class PlayerInfo : NetworkBehaviour
 
     public static void SetSelectedWarriors(GameInfo.CharacterType[] arr)
     {
-
+        csb(arr);
     }
-
-
-
 }
