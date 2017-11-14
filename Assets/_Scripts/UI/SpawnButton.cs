@@ -6,7 +6,18 @@ using UnityEngine.UI;
 public class SpawnButton : MonoBehaviour {
 
     [SerializeField]
-    private GameInfo.CharacterType type { get; set; }
+    private GameInfo.CharacterType type;
+
+    public GameInfo.CharacterType GetType()
+    {
+        return type;
+    }
+
+    public void SetType(GameInfo.CharacterType t)
+    {
+        type = t;
+        transform.GetComponentInChildren<Text>().text = t.ToString();
+    }
 
     public void Start()
     {
