@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.Networking;
 
-public class Field : NetworkBehaviour
+public class Field : MonoBehaviour
 {
 
     [SerializeField]
@@ -18,8 +18,6 @@ public class Field : NetworkBehaviour
         {
             var clone = (GameObject)Instantiate(ResourceManager.getCharacter(GameInfo.spawnType.ToString()), spawnPoint.position, spawnPoint.rotation);
             EnemySpawnObject en = new EnemySpawnObject(GameInfo.spawnType, fieldNumber);
-
-            Spawn(en);
             GameInfo.isSpawn = false;
         }
     }
