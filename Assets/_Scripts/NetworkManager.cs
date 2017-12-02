@@ -16,8 +16,14 @@ public class NetworkManager : MonoBehaviour, WebSocketUnityDelegate
     private StreamReader reader;
     WebSocketUnity websocket;
 
+    private static NetworkManager instance;
+    public static NetworkManager getInstance()
+    {
+        return instance;
+    }
 
     void Start () {
+        instance = this;
         Connect();
 	}
 	
@@ -36,7 +42,7 @@ public class NetworkManager : MonoBehaviour, WebSocketUnityDelegate
     {
         websocket = new WebSocketUnity("ws://localhost:3735/socket.io/?EIO=4&transport=websocket", this);
         websocket.Open();
-        Send("test", null);
+        Send("auth", null);
     }
 
     public void SendTest(int n)
