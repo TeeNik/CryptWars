@@ -14,7 +14,8 @@ public class NetworkManager : MonoBehaviour, WebSocketUnityDelegate
     private NetworkStream stream;
     private StreamWriter writer;
     private StreamReader reader;
-    WebSocketUnity websocket;
+    private WebSocketUnity websocket;
+    public Action<string, JSONObject> responceEvent;
 
     private static NetworkManager instance;
     public static NetworkManager getInstance()
@@ -86,7 +87,7 @@ public class NetworkManager : MonoBehaviour, WebSocketUnityDelegate
     public void OnWebSocketUnityReceiveEvent(string eventName, JSONObject data)
     {
         print(eventName + data.str);
-        SendTest(5);
+        responceEvent.Invoke(eventName, data);
     }
 
     public void OnWebSocketUnityError(string error)
