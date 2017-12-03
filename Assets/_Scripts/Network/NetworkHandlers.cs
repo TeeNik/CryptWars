@@ -31,7 +31,8 @@ public class NetworkHandlers : MonoBehaviour {
                 NetworkCommands eventType = responseObjects[i].eventName.ToEnum<NetworkCommands>();
                 switch (eventType)
                 {
-
+                    case NetworkCommands.auth:
+                        break;
                 }
                 //StaticManager.ServerEvent.Publish(eventType);
                 responseObjects[i] = null;

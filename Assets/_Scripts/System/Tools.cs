@@ -1,16 +1,13 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Tools : MonoBehaviour {
+public static class Tools {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    public static T ToEnum<T>(this string value)
+    {
+        return (T)Enum.Parse(typeof(T), value, true);
+    }
+
 }

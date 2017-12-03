@@ -41,9 +41,9 @@ public class NetworkManager : MonoBehaviour, WebSocketUnityDelegate
     [ContextMenu("Connect")]
     private void Connect()
     {
+        NetworkHandlers.Init(this);
         websocket = new WebSocketUnity("ws://localhost:3735/socket.io/?EIO=4&transport=websocket", this);
         websocket.Open();
-        Send("auth", null);
     }
 
     public void SendTest(int n)
