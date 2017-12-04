@@ -17,6 +17,8 @@ public class NetworkManager : MonoBehaviour, WebSocketUnityDelegate
     private WebSocketUnity websocket;
     public Action<string, JSONObject> responceEvent;
 
+    private bool isAuth = true;
+
     private static NetworkManager instance;
     public static NetworkManager getInstance()
     {
@@ -26,9 +28,37 @@ public class NetworkManager : MonoBehaviour, WebSocketUnityDelegate
     void Start () {
         instance = this;
         Connect();
-	}
-	
-	public class TestObject
+        if (websocket.IsOpened())
+        {
+            Auth();
+        } else
+        {
+            print("not yet");
+        }
+        
+    }
+
+    public void Auth()
+    {
+        print("id: " + PlayerPrefs.GetInt("id"));
+        if(PlayerPrefs.GetInt("id") != 0)
+        {
+            int id = UnityEngine.Random.Range(10000000, 90000000);
+            PlayerPrefs.SetInt("id", id);
+            print("id: " + id);
+            AccountObject ao = new AccountObject(id, "Yanchik");
+            JSONObject js = new JSONObject(ao.GetJson());
+            websocket.Send(NetworkCommands.auth.ToString(), js);
+        } else
+        {
+            int id = PlayerPrefs.GetInt("id");
+            AccountObject ao = new AccountObject(id, "Yanchik");
+            JSONObject js = new JSONObject(ao.GetJson());
+            websocket.Send(NetworkCommands.auth.ToString(), js);
+        }
+    }
+
+    public class TestObject
     {
         public int num;
 
@@ -44,6 +74,8 @@ public class NetworkManager : MonoBehaviour, WebSocketUnityDelegate
         NetworkHandlers.Init(this);
         websocket = new WebSocketUnity("ws://localhost:3735/socket.io/?EIO=4&transport=websocket", this);
         websocket.Open();
+        
+        //websocket.Send(NetworkCommands.auth.ToString(), )
     }
 
     public void SendTest(int n)
