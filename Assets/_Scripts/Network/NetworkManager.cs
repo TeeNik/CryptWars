@@ -27,16 +27,18 @@ public class NetworkManager : MonoBehaviour, WebSocketUnityDelegate
 
     void Start () {
         instance = this;
-        Connect();
-        if (websocket.IsOpened())
+        Connect();       
+    }
+
+    public void Update()
+    {
+        if (isAuth)
         {
             Auth();
-        } else
-        {
-            print("not yet");
+            isAuth = false;
         }
-        
     }
+
 
     public void Auth()
     {
@@ -93,7 +95,7 @@ public class NetworkManager : MonoBehaviour, WebSocketUnityDelegate
 
     public void OnWebSocketUnityOpen(string sender)
     {
-        print(sender);
+        isAuth = true;
     }
 
     public void OnWebSocketUnityClose(string reason)

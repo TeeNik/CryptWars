@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AccountObject {
+public class AccountObject : CallbackObject {
 
     public long id;
     public string name;
@@ -16,8 +16,5 @@ public class AccountObject {
         name = s;
     }
 
-    public string GetJson()
-    {
-        return JsonConvert.SerializeObject(this, Formatting.Indented);
-    }
+    
 }

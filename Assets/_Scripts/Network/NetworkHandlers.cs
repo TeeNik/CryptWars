@@ -33,6 +33,11 @@ public class NetworkHandlers : MonoBehaviour {
                 {
                     case NetworkCommands.auth:
                         break;
+                    case NetworkCommands.connect:
+
+                        ConnectObject co = ConnectObject.FromJson<ConnectObject>(responseObjects[i].jsonObject.ToString());
+                        networkManager.Send(NetworkCommands.connect.ToString(), )
+                        break;
                 }
                 //StaticManager.ServerEvent.Publish(eventType);
                 responseObjects[i] = null;
