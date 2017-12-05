@@ -36,7 +36,9 @@ public class NetworkHandlers : MonoBehaviour {
                     case NetworkCommands.connect:
 
                         ConnectObject co = ConnectObject.FromJson<ConnectObject>(responseObjects[i].jsonObject.ToString());
-                        networkManager.Send(NetworkCommands.connect.ToString(), )
+                        //networkManager.Send(NetworkCommands.connect.ToString(), ConnectObject.FromJson<ConnectObject>(re)
+                        print(responseObjects[i].jsonObject.ToString());
+                        print(co.id + "  " + co.ok);
                         break;
                 }
                 //StaticManager.ServerEvent.Publish(eventType);
@@ -48,6 +50,7 @@ public class NetworkHandlers : MonoBehaviour {
 
     public static void OnEvent(string ev, JSONObject json)
     {
+        print("On event " + ev);
         responseObjects.Add(
             new ResponseObject()
             {

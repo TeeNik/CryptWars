@@ -30,13 +30,14 @@ public class NetworkManager : MonoBehaviour, WebSocketUnityDelegate
         Connect();       
     }
 
-    public void Update()
+    public void FixedUpdate()
     {
         if (isAuth)
         {
             Auth();
             isAuth = false;
         }
+        NetworkHandlers.FixedUpdate();
     }
 
 
@@ -105,7 +106,7 @@ public class NetworkManager : MonoBehaviour, WebSocketUnityDelegate
 
     public void OnWebSocketUnityReceiveMessage(string message)
     {
-        print(message);
+        //print(message);
     }
 
     public void OnWebSocketUnityReceiveDataOnMobile(string base64EncodedData)

@@ -25,12 +25,35 @@ public class Enemy : MonoBehaviour {
     void Start()
     {
         ChangeState(new MoveState());
+
+        StartCoroutine(checkMove());
     }
 
     void Update()
     {
         currentState.Execute();
         LookAtTarger();
+
+        
+
+    }
+
+    public IEnumerator checkMove()
+    {
+        float dx = 0;
+        for(int i = 0; i < 20; i++)
+        {
+            if(dx == 0)
+            {
+                dx = transform.position.x;
+            } else
+            {
+                print(dx - transform.position.x);
+                dx = transform.position.x;
+            }
+            yield return new WaitForSeconds(0.5f);
+        }
+        
     }
 
     public void ChangeState(IEnemyState newState)

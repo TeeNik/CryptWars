@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemySpawnObject {
+public class EnemySpawnObject : CallbackObject{
     public GameInfo.CharacterType type;
     public int field;
 
