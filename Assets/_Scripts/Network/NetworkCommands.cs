@@ -5,5 +5,7 @@ using UnityEngine;
 public enum NetworkCommands {
     none,
     connect,
-    auth
+    auth,
+    startBattle,
+    spawnWarrior,
 }
