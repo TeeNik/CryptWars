@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WarriorObject : MonoBehaviour {
+public class WarriorObject : CallbackObject {
 
     public int id;
     public int line;

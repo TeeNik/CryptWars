@@ -40,6 +40,12 @@ public class NetworkHandlers : MonoBehaviour {
                         print(responseObjects[i].jsonObject.ToString());
                         print(co.id + "  " + co.ok);
                         break;
+                    case NetworkCommands.startBattle:
+                        print("Start Battle");
+                        break;
+                    case NetworkCommands.spawnWarrior:
+
+                        break;
                 }
                 //StaticManager.ServerEvent.Publish(eventType);
                 responseObjects[i] = null;
@@ -59,4 +65,10 @@ public class NetworkHandlers : MonoBehaviour {
             }
         );
     } 
+
+    private void SpawnEvent(ResponseObject r)
+    {
+        WarriorObject w = WarriorObject.FromJson<WarriorObject>(r.jsonObject.ToString());
+        EventHandler.instance.spawnEvent(w);
+    }
 }
