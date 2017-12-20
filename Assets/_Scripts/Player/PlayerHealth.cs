@@ -1,33 +1,33 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using Assets._Scripts.System;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class PlayerHealth : MonoBehaviour
+namespace Assets._Scripts.Player
 {
-    [SerializeField]
-    float maxHealth;
-
-    float curHealth;
-
-    [SerializeField]
-    private bool player;
-
-    void Start () {
-        curHealth = maxHealth - 20;
-        MeleeState.AttackPlayer += TakeDamage;
-    }
-	
-	void Update () {
-        ResourceManager.Instance.healthBar.fillAmount = curHealth / maxHealth;
-    }
-
-    void TakeDamage(float d, bool p)
+    public class PlayerHealth : MonoBehaviour
     {
-        if(player == p)
+        [SerializeField]
+        float _maxHealth;
+
+        float _curHealth;
+
+        [SerializeField]
+        private bool _player;
+
+        void Start () {
+            _curHealth = _maxHealth - 20;
+        }
+	
+        void Update () {
+            ResourceManager.Instance.HealthBar.fillAmount = _curHealth / _maxHealth;
+        }
+
+        void TakeDamage(float d, bool p)
         {
-            print("Damage");
-            curHealth -= d;
+            if(_player == p)
+            {
+                print("Damage");
+                _curHealth -= d;
+            }
         }
     }
 }

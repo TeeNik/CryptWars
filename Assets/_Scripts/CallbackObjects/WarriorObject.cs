@@ -1,8 +1,10 @@
-﻿namespace Assets._Scripts.CallbackObjects
+﻿using System;
+
+namespace Assets._Scripts.CallbackObjects
 {
     public class WarriorObject : CallbackObject {
 
-        public int Id;
+        public Guid Id;
         public int Line;
         public GameInfo.CharacterType Type;
         public int MaxHp;
@@ -10,7 +12,7 @@
         public float Reload;
         public float X;
         public float Y;
-        public bool LookingLeft;
+        public bool FacingRight;
 
 
     }

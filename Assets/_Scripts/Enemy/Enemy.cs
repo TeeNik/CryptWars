@@ -92,19 +92,12 @@ public class Enemy : MonoBehaviour {
     }
 
     void OnTriggerEnter2D(Collider2D other)
-    {
-        /*if(other.tag == "Sword")
-        {
-            GetComponent<Health>().TakeDamage(40);
-            print(GetComponent<Health>().currentHealth);
-        }*/
-        
+    {       
         currentState.OnTriggerEnter2D(other);
     }
 
     public void ChangeDirection()
     {
-        print("here");
         facingRight = !facingRight;
         transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
     }

@@ -1,41 +1,48 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using Assets._Scripts.CallbackObjects;
 using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.UI;
 
 public class Character : NetworkBehaviour
 {
+    private Guid _id;
+    [SerializeField]
+    private float _maxHealth;
+    [SerializeField]
+    private float _damage;
+
+    private float _curHealth;
 
     [SerializeField]
-    private float maxHealth;
-    [SerializeField]
-    private float damage;
-
-    //[SerializeField]
-    [SyncVar(hook = "OnChangeHealth")]
-    private float curHealth;
-
-    [SerializeField]
-    private Image healthBar;
+    private Image _healthBar;
 
     public void Start()
     {
-        curHealth = maxHealth;
+        _curHealth = _maxHealth;
     }
 
     void OnChangeHealth(float hp)
     {
-        healthBar.fillAmount = hp / maxHealth;
+        _healthBar.fillAmount = hp / _maxHealth;
     }
 
     public void TakeDamage(float d)
     {
-        curHealth -= d;
-        if(curHealth <= 0)
+        _curHealth -= d;
+        if(_curHealth <= 0)
         {
             Destroy(gameObject);
         }
+    }
+
+    public void Init(WarriorObject wo)
+    {
+        _maxHealth = wo.MaxHp;
+        _curHealth = _maxHealth;
+        _id = wo.Id;
     }
 
 }

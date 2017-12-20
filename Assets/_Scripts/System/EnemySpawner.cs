@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Assets._Scripts.CallbackObjects;
 using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour {
@@ -21,6 +22,6 @@ public class EnemySpawner : MonoBehaviour {
 
     public static void SpawnWarrior(WarriorObject w)
     {
-        Instance._fields[w.line].Spawn(w);
+        Instance._fields[w.Line].Spawn(w);
     }
 }
