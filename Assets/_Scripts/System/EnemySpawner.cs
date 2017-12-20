@@ -5,23 +5,23 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour {
 
     [SerializeField]
-    private Field[] fields;
+    private Field[] _fields;
 
-    public static EnemySpawner inst;
+    public static EnemySpawner Instance;
 
     private void Start()
     {
-        EventHandler.spawnEvent += SpawnWarrior;
-        inst = this;
+        EventHandler.Instance.SpawnEvent += SpawnWarrior;
+        Instance = this;
     }
 
-    public static Field getField(int i)
+    public static Field GetField(int i)
     {
-        return inst.fields[i];
+        return Instance._fields[i];
     }
 
     public static void SpawnWarrior(WarriorObject w)
     {
-        inst.fields[w.line].Spawn(w);
+        Instance._fields[w.line].Spawn(w);
     }
 }

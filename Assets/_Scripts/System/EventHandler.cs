@@ -5,16 +5,18 @@ using UnityEngine;
 
 public class EventHandler {
 
-    public static EventHandler instance;
+    public static EventHandler Instance;
 
     public EventHandler()
     {
-        instance = this;
+        Instance = this;
     }
 
     public delegate void DamagePlayer(float damage, bool player);
     public delegate void CreateSpawnButtons(GameInfo.CharacterType[] arr);
 
-    public event Action<WarriorObject> spawnEvent; 
+    public event Action<WarriorObject> SpawnEvent; 
+
+    
 
 }
