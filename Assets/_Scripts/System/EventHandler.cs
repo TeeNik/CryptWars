@@ -11,12 +11,4 @@ public class EventHandler {
     {
         Instance = this;
     }
-
-    public delegate void DamagePlayer(float damage, bool player);
-    public delegate void CreateSpawnButtons(GameInfo.CharacterType[] arr);
-
-    public event Action<WarriorObject> SpawnEvent; 
-
-    
-
 }

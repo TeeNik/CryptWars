@@ -6,36 +6,36 @@ using UnityEngine.UI;
 public class ResourceManager : MonoBehaviour {
 
     [SerializeField]
-    private GameObject[] characters;
+    private GameObject[] _characters;
 
     [SerializeField]
-    private Transform spawnPosition;
+    private Transform _spawnPosition;
 
-    public Image healthBar;
+    public Image HealthBar;
 
-    public static ResourceManager inst;
+    public static ResourceManager Instance;
 
     private void Start()
     {
-        inst = this;
+        Instance = this;
     }
 
-    public static GameObject getCharacter(string Name)
+    public static GameObject GetCharacter(string name)
     {
-        return Get(Name + " (UnityEngine.GameObject)", inst.characters);
+        return Get(name + " (UnityEngine.GameObject)", Instance._characters);
     }
 
-    public static Transform getSpawnPosition()
+    public static Transform GetSpawnPosition()
     {
-        return inst.spawnPosition;
+        return Instance._spawnPosition;
     }
 
-    public static T Get<T>(string Name, T[] Array){
-        for (int i = 0; i < Array.Length; i++)
+    public static T Get<T>(string name, T[] array){
+        for (int i = 0; i < array.Length; i++)
         {
-            if (Array[i].ToString() == Name)
+            if (array[i].ToString() == name)
             {
-                return Array[i];
+                return array[i];
             }
         }
         return default(T);

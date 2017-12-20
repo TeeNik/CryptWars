@@ -1,19 +1,18 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿namespace Assets._Scripts.CallbackObjects
+{
+    public class WarriorObject : CallbackObject {
 
-public class WarriorObject : CallbackObject {
-
-    public int id;
-    public int line;
-    public int type;
-    public int maxHp;
-    public int hp;
-    public int reload;
-    public float x;
-    public float y;
-    public bool lookingLeft;
+        public int Id;
+        public int Line;
+        public GameInfo.CharacterType Type;
+        public int MaxHp;
+        public int Hp;
+        public float Reload;
+        public float X;
+        public float Y;
+        public bool LookingLeft;
 
 
+    }
 }
   

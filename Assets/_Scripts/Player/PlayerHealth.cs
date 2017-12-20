@@ -19,7 +19,7 @@ public class PlayerHealth : MonoBehaviour
     }
 	
 	void Update () {
-        ResourceManager.inst.healthBar.fillAmount = curHealth / maxHealth;
+        ResourceManager.Instance.healthBar.fillAmount = curHealth / maxHealth;
     }
 
     void TakeDamage(float d, bool p)

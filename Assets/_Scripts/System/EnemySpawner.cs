@@ -11,7 +11,6 @@ public class EnemySpawner : MonoBehaviour {
 
     private void Start()
     {
-        EventHandler.Instance.SpawnEvent += SpawnWarrior;
         Instance = this;
     }
 
