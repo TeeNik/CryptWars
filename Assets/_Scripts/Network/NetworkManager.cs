@@ -19,14 +19,10 @@ public class NetworkManager : MonoBehaviour, WebSocketUnityDelegate
 
     private bool isAuth = true;
 
-    private static NetworkManager instance;
-    public static NetworkManager getInstance()
-    {
-        return instance;
-    }
+    public static NetworkManager Instance;
 
     void Start () {
-        instance = this;
+        Instance = this;
         Connect();       
     }
 
@@ -49,16 +45,19 @@ public class NetworkManager : MonoBehaviour, WebSocketUnityDelegate
             int id = UnityEngine.Random.Range(10000000, 90000000);
             PlayerPrefs.SetInt("id", id);
             print("id: " + id);
-            AccountObject ao = new AccountObject(id, "Yanchik");
-            JSONObject js = new JSONObject(ao.GetJson());
-            websocket.Send(NetworkCommands.auth.ToString(), js);
+            SendAuth(id, "Yanchik");
         } else
         {
             int id = PlayerPrefs.GetInt("id");
-            AccountObject ao = new AccountObject(id, "Yanchik");
-            JSONObject js = new JSONObject(ao.GetJson());
-            websocket.Send(NetworkCommands.auth.ToString(), js);
+            SendAuth(id, "Yanchik");
         }
+    }
+
+    private void SendAuth(int id, string nickname)
+    {
+        AccountObject ao = new AccountObject(id, nickname);
+        JSONObject js = new JSONObject(ao.GetJson());
+        websocket.Send(NetworkCommands.auth.ToString(), js);
     }
 
     public class TestObject

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
@@ -6,24 +7,18 @@ using UnityEngine.UI;
 
 public class PlayerInfo : MonoBehaviour
 {
+    private Guid Id { get { return Id; } set { Id = value; } }
+    int _coin;
+    int _energy;
 
-    int coin;
-    int energy;
-
-    public GameObject obj;
-    public Transform place;
+    public GameObject Obj;
+    public Transform Place;
 
     [SerializeField]
-    private GameInfo.CharacterType[] selectedWarriors;
-    public static event EventHandler.CreateSpawnButtons csb;
+    private GameInfo.CharacterType[] _selectedWarriors;
 
     private void Start()
     {
         
-    }
-
-    public static void SetSelectedWarriors(GameInfo.CharacterType[] arr)
-    {
-        csb(arr);
     }
 }

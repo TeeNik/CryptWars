@@ -5,10 +5,10 @@ namespace Assets._Scripts.Player
 {
     public class PlayerHealth : MonoBehaviour
     {
-        [SerializeField]
-        float _maxHealth;
+        float _maxHealth = 100;
 
         float _curHealth;
+        public bool _facingRight;
 
         [SerializeField]
         private bool _player;

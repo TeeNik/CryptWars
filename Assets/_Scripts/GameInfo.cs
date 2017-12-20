@@ -4,8 +4,8 @@ using UnityEngine;
 
 public static class GameInfo {
 
-    public static bool isSpawn = false;
-    public static CharacterType spawnType;
+    public static bool IsSpawn = false;
+    public static CharacterType SpawnType;
 
 	public enum CharacterType
     {

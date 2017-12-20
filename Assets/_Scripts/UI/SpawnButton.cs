@@ -27,14 +27,14 @@ public class SpawnButton : MonoBehaviour {
     public void OnClick()
     {
         var localType = GetComponent<SpawnButton>().type;
-        if (GameInfo.isSpawn && GameInfo.spawnType == localType)
+        if (GameInfo.IsSpawn && GameInfo.SpawnType == localType)
         {
-            GameInfo.isSpawn = false;
+            GameInfo.IsSpawn = false;
         }
         else
         {
-            GameInfo.isSpawn = true;
-            GameInfo.spawnType = localType;
+            GameInfo.IsSpawn = true;
+            GameInfo.SpawnType = localType;
         }
     }
 }
