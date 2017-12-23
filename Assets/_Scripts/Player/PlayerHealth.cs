@@ -1,5 +1,6 @@
 ﻿using Assets._Scripts.System;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Assets._Scripts.Player
 {
@@ -10,6 +11,8 @@ namespace Assets._Scripts.Player
         float _curHealth;
         public bool _facingRight;
 
+        public Image HealthBar;
+
         [SerializeField]
         private bool _player;
 
@@ -18,7 +21,7 @@ namespace Assets._Scripts.Player
         }
 	
         void Update () {
-            ResourceManager.Instance.HealthBar.fillAmount = _curHealth / _maxHealth;
+            HealthBar.fillAmount = _curHealth / _maxHealth;
         }
 
         void TakeDamage(float d, bool p)

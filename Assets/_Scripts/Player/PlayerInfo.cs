@@ -17,8 +17,8 @@ public class PlayerInfo : MonoBehaviour
     [SerializeField]
     private GameInfo.CharacterType[] _selectedWarriors;
 
-    private void Start()
+    void Start()
     {
-        
+        Id = new Guid();
     }
 }

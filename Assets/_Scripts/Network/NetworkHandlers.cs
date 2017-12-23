@@ -71,6 +71,6 @@ public class NetworkHandlers : MonoBehaviour {
     private void SpawnEvent(ResponseObject r)
     {
         WarriorObject w = WarriorObject.FromJson<WarriorObject>(r.JsonObject.ToString());
-        EventHandler.Instance.SpawnEvent(w);
+        EnemySpawner.Instance.SpawnWarrior(w);
     }
 }

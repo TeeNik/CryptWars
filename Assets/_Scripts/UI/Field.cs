@@ -42,7 +42,7 @@ public class Field : MonoBehaviour
     private void SendSpawn()
     {
         WarriorObject wo = new WarriorObject();
-        wo.Id = StaticManager.Player.Id;
+        wo.Id = StaticManager.Instance.Player.Id;
         wo.Line = fieldNumber;
         wo.Type = GameInfo.SpawnType;
         NetworkManager.Instance.Send(NetworkCommands.spawnWarrior.ToString(), new JSONObject(wo.GetJson())); 

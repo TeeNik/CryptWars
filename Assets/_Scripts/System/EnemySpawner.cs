@@ -15,12 +15,12 @@ public class EnemySpawner : MonoBehaviour {
         Instance = this;
     }
 
-    public static Field GetField(int i)
+    public Field GetField(int i)
     {
         return Instance._fields[i];
     }
 
-    public static void SpawnWarrior(WarriorObject w)
+    public void SpawnWarrior(WarriorObject w)
     {
         Instance._fields[w.Line].Spawn(w);
     }

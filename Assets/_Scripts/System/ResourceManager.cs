@@ -6,12 +6,7 @@ namespace Assets._Scripts.System
     public class ResourceManager : MonoBehaviour {
 
         [SerializeField]
-        private GameObject[] _characters;
-
-        [SerializeField]
-        private Transform _spawnPosition;
-
-        public Image HealthBar;
+        private GameObject[] _characters;      
 
         public static ResourceManager Instance;
 
@@ -23,11 +18,6 @@ namespace Assets._Scripts.System
         public static GameObject GetCharacter(string name)
         {
             return Get(name + " (UnityEngine.GameObject)", Instance._characters);
-        }
-
-        public static Transform GetSpawnPosition()
-        {
-            return Instance._spawnPosition;
         }
 
         public static T Get<T>(string name, T[] array){

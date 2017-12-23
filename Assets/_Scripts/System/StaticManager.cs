@@ -6,11 +6,18 @@ using UnityEngine;
 
 namespace Assets._Scripts.System
 {
-    class StaticManager
+    class StaticManager : MonoBehaviour
     {
 
-        public static PlayerInfo Player;
-        public static PlayerInfo Opponent;
+        public PlayerInfo Player;
+        public PlayerInfo Opponent;
+
+        public static StaticManager Instance;
+
+        void Awake()
+        {
+            Instance = this;
+        }
 
     }
 }
