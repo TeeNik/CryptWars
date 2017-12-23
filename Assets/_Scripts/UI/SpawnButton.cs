@@ -8,11 +8,6 @@ public class SpawnButton : MonoBehaviour {
     [SerializeField]
     private GameInfo.CharacterType type;
 
-    public GameInfo.CharacterType GetType()
-    {
-        return type;
-    }
-
     public void SetType(GameInfo.CharacterType t)
     {
         type = t;

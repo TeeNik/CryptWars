@@ -1,9 +1,10 @@
 ﻿using System.Runtime.InteropServices;
 using Assets._Scripts.CallbackObjects;
+using Assets._Scripts.Network;
 using Assets._Scripts.Player;
 using Assets._Scripts.System;
 using UnityEngine;
-using UnityEngine.Networking;
+
 
 public class Field : MonoBehaviour
 {
@@ -16,12 +17,11 @@ public class Field : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (GameInfo.isSpawn)
+        if (GameInfo.IsSpawn)
         {
             //var clone = (GameObject)Instantiate(ResourceManager.GetCharacter(GameInfo.spawnType.ToString()), spawnPoint.position, spawnPoint.rotation);
-            Warrior
-            NetworkManager.Instance.Send(NetworkCommands.spawnWarrior.ToString(), );
-            GameInfo.isSpawn = false;
+            SendSpawn();
+            GameInfo.IsSpawn = false;
         }
     }
 
@@ -42,6 +42,9 @@ public class Field : MonoBehaviour
     private void SendSpawn()
     {
         WarriorObject wo = new WarriorObject();
-        wo.FacingRight = StaticManager.Player.GetComponent<PlayerHealth>()._facingRight;
+        wo.Id = StaticManager.Player.Id;
+        wo.Line = fieldNumber;
+        wo.Type = GameInfo.SpawnType;
+        NetworkManager.Instance.Send(NetworkCommands.spawnWarrior.ToString(), new JSONObject(wo.GetJson())); 
     }
 }

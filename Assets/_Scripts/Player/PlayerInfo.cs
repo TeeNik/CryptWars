@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class PlayerInfo : MonoBehaviour
 {
-    private Guid Id { get { return Id; } set { Id = value; } }
+    public Guid Id;
     int _coin;
     int _energy;
 

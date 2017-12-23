@@ -11,8 +11,6 @@ public class MeleeState : IEnemyState
 
     private Enemy enemy;
 
-    public static event EventHandler.DamagePlayer AttackPlayer;
-
     public void Enter(Enemy enemy)
     {
         this.enemy = enemy;
@@ -56,7 +54,8 @@ public class MeleeState : IEnemyState
 
             if(enemy.target.gameObject.tag == "Castle")
             {
-                AttackPlayer(enemy.damage, true);
+                Debug.Log("attack player");
+                //AttackPlayer(enemy.damage, true);
             }
             else
             {

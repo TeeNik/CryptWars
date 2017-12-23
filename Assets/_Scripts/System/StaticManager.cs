@@ -9,8 +9,8 @@ namespace Assets._Scripts.System
     class StaticManager
     {
 
-        public static GameObject Player;
-        public static GameObject Opponent;
+        public static PlayerInfo Player;
+        public static PlayerInfo Opponent;
 
     }
 }
