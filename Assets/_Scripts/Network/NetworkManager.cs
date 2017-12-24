@@ -121,7 +121,6 @@ namespace Assets._Scripts.Network
 
         public void OnWebSocketUnityReceiveEvent(string eventName, JSONObject data)
         {
-            print(eventName + data.str);
             responceEvent.Invoke(eventName, data);
         }
 

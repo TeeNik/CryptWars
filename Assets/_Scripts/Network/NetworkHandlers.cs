@@ -36,11 +36,8 @@ public class NetworkHandlers : MonoBehaviour {
                     case NetworkCommands.auth:
                         break;
                     case NetworkCommands.connect:
-
                         ConnectObject co = ConnectObject.FromJson<ConnectObject>(responseObjects[i].JsonObject.ToString());
-                        //networkManager.Send(NetworkCommands.connect.ToString(), ConnectObject.FromJson<ConnectObject>(re)
-                        print(responseObjects[i].JsonObject.ToString());
-                        print(co.id + "  " + co.ok);
+                        NetworkManager.Instance.Send(NetworkCommands.connect.ToString(), responseObjects[i].JsonObject);
                         break;
                     case NetworkCommands.startBattle:
                         print("Start Battle");
@@ -58,7 +55,6 @@ public class NetworkHandlers : MonoBehaviour {
 
     public static void OnEvent(string ev, JSONObject json)
     {
-        print("On event " + ev);
         responseObjects.Add(
             new ResponseObject()
             {
