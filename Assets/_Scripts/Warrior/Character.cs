@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.UI;
 
-public class Character : NetworkBehaviour
+public class Character : MonoBehaviour
 {
     private Guid _id;
     [SerializeField]
