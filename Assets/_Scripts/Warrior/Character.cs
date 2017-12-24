@@ -40,9 +40,9 @@ public class Character : MonoBehaviour
 
     public void Init(WarriorObject wo)
     {
-        _maxHealth = wo.MaxHp;
+        /*_maxHealth = wo.MaxHp;
         _curHealth = _maxHealth;
-        _id = wo.Id;
+        _id = wo.Id;*/
     }
 
 }

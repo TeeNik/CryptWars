@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class PlayerInfo : MonoBehaviour
 {
-    public Guid Id;
+    public int Id;
     int _coin;
     int _energy;
 
@@ -19,6 +19,6 @@ public class PlayerInfo : MonoBehaviour
 
     void Start()
     {
-        Id = new Guid();
+        Id = 3315;
     }
 }

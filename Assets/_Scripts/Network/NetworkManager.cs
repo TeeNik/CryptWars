@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Net.Sockets;
+using Assets._Scripts.System;
 using Newtonsoft.Json;
 using UnityEngine;
 
@@ -43,11 +44,12 @@ namespace Assets._Scripts.Network
             {
                 int id = UnityEngine.Random.Range(10000000, 90000000);
                 PlayerPrefs.SetInt("id", id);
-                print("id: " + id);
+                StaticManager.Instance.Player.Id = id;
                 SendAuth(id, "Yanchik");
             } else
             {
                 int id = PlayerPrefs.GetInt("id");
+                StaticManager.Instance.Player.Id = id;
                 SendAuth(id, "Yanchik");
             }
         }

@@ -27,7 +27,7 @@ public class Field : MonoBehaviour
 
     public void Spawn(WarriorObject wo)
     {
-        var clone = Instantiate(ResourceManager.GetCharacter(wo.Type.ToString()), spawnPoint.position, spawnPoint.rotation);
+        var clone = Instantiate(ResourceManager.GetCharacter("Goblin"/*wo.Type.ToString()*/), spawnPoint.position, spawnPoint.rotation);
         InitEnemy(clone, wo);
     }
 
@@ -42,9 +42,11 @@ public class Field : MonoBehaviour
     private void SendSpawn()
     {
         WarriorObject wo = new WarriorObject();
-        wo.Id = StaticManager.Instance.Player.Id;
+        /*wo.PlayerId = StaticManager.Instance.Player.Id;
+        wo.Type = GameInfo.SpawnType;*/
         wo.Line = fieldNumber;
-        wo.Type = GameInfo.SpawnType;
-        NetworkManager.Instance.Send(NetworkCommands.spawnWarrior.ToString(), new JSONObject(wo.GetJson())); 
+        wo.FacingRight = false;
+        JSONObject jsonObject = new JSONObject(wo.GetJson());
+        NetworkManager.Instance.Send(NetworkCommands.spawnWarrior.ToString(), jsonObject); 
     }
 }
