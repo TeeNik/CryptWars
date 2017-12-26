@@ -33,18 +33,20 @@ public class NetworkHandlers : MonoBehaviour {
                 NetworkCommands eventType = responseObjects[i].EventName.ToEnum<NetworkCommands>();
                 switch (eventType)
                 {
-                    case NetworkCommands.auth:
+                    case NetworkCommands.Auth:
                         break;
-                    case NetworkCommands.connect:
+                    case NetworkCommands.Connect:
                         ConnectObject co = ConnectObject.FromJson<ConnectObject>(responseObjects[i].JsonObject.ToString());
-                        NetworkManager.Instance.Send(NetworkCommands.connect.ToString(), responseObjects[i].JsonObject);
+                        NetworkManager.Instance.Send(NetworkCommands.Connect.ToString(), responseObjects[i].JsonObject);
                         break;
-                    case NetworkCommands.startBattle:
+                    case NetworkCommands.StartBattle:
                         print("Start Battle");
                         break;
-                    case NetworkCommands.spawnWarrior:
-                        WarriorObject wo = WarriorObject.FromJson<WarriorObject>(responseObjects[i].JsonObject.ToString());
-                        EnemySpawner.Instance.SpawnWarrior(wo);
+                    case NetworkCommands.SpawnWarrior:
+                        SpawnEvent(responseObjects[i]);
+                        break;
+                    case NetworkCommands.Move:
+                        MoveEvent(responseObjects[i]);
                         break;
                 }
                 //StaticManager.ServerEvent.Publish(eventType);
@@ -53,6 +55,8 @@ public class NetworkHandlers : MonoBehaviour {
         }
         responseObjects.RemoveAll(x => x == null);
     }
+
+    
 
     public static void OnEvent(string ev, JSONObject json)
     {
@@ -65,9 +69,15 @@ public class NetworkHandlers : MonoBehaviour {
         );
     } 
 
-    private void SpawnEvent(ResponseObject r)
+    private static void SpawnEvent(ResponseObject r)
     {
         WarriorObject w = WarriorObject.FromJson<WarriorObject>(r.JsonObject.ToString());
         EnemySpawner.Instance.SpawnWarrior(w);
+    }
+
+    private static void MoveEvent(ResponseObject r)
+    {
+        WarriorObject w = WarriorObject.FromJson<WarriorObject>(r.JsonObject.ToString());
+        WarriorManager.Instance.SyncWarrior(w);
     }
 }

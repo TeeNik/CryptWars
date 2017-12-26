@@ -58,7 +58,7 @@ namespace Assets._Scripts.Network
         {
             AccountObject ao = new AccountObject(id, nickname);
             JSONObject js = new JSONObject(ao.GetJson());
-            websocket.Send(NetworkCommands.auth.ToString(), js);
+            websocket.Send(NetworkCommands.Auth.ToString(), js);
         }
 
         public class TestObject

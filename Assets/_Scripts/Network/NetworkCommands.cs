@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public enum NetworkCommands {
-    none,
-    connect,
-    auth,
-    startBattle,
-    spawnWarrior,
+    None,
+    Connect,
+    Auth,
+    StartBattle,
+    SpawnWarrior,
+    Move,
 }

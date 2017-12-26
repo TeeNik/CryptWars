@@ -19,7 +19,6 @@ public class Field : MonoBehaviour
     {
         if (GameInfo.IsSpawn)
         {
-            //var clone = (GameObject)Instantiate(ResourceManager.GetCharacter(GameInfo.spawnType.ToString()), spawnPoint.position, spawnPoint.rotation);
             SendSpawn();
             GameInfo.IsSpawn = false;
         }
@@ -28,9 +27,9 @@ public class Field : MonoBehaviour
     public void Spawn(WarriorObject wo)
     {
         GameInfo.CharacterType type = wo.Type;
-        print(type);
         var clone = Instantiate(ResourceManager.GetCharacter(type.ToString()), spawnPoint.position, spawnPoint.rotation);
         InitEnemy(clone, wo);
+        WarriorManager.Instance.AddWarrior(clone.GetComponent<Character>());       
     }
 
     private void InitEnemy(GameObject enemy, WarriorObject wo)
@@ -49,6 +48,6 @@ public class Field : MonoBehaviour
         wo.Line = fieldNumber;
         wo.FacingRight = true;
         JSONObject jsonObject = new JSONObject(wo.GetJson());
-        NetworkManager.Instance.Send(NetworkCommands.spawnWarrior.ToString(), jsonObject); 
+        NetworkManager.Instance.Send(NetworkCommands.SpawnWarrior.ToString(), jsonObject); 
     }
 }

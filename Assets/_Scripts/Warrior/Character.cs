@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 public class Character : MonoBehaviour
 {
-    private Guid _id;
+    public int Id;
     [SerializeField]
     private float _maxHealth;
     [SerializeField]
@@ -40,9 +40,10 @@ public class Character : MonoBehaviour
 
     public void Init(WarriorObject wo)
     {
-        /*_maxHealth = wo.MaxHp;
+        _maxHealth = wo.MaxHp;
         _curHealth = _maxHealth;
-        _id = wo.Id;*/
+        Id = wo.Id;
+        
     }
 
 }
