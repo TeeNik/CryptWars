@@ -27,7 +27,9 @@ public class Field : MonoBehaviour
 
     public void Spawn(WarriorObject wo)
     {
-        var clone = Instantiate(ResourceManager.GetCharacter(wo.Type.ToString()), spawnPoint.position, spawnPoint.rotation);
+        GameInfo.CharacterType type = wo.Type;
+        print(type);
+        var clone = Instantiate(ResourceManager.GetCharacter(type.ToString()), spawnPoint.position, spawnPoint.rotation);
         InitEnemy(clone, wo);
     }
 

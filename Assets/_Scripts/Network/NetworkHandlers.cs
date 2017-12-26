@@ -43,7 +43,8 @@ public class NetworkHandlers : MonoBehaviour {
                         print("Start Battle");
                         break;
                     case NetworkCommands.spawnWarrior:
-
+                        WarriorObject wo = WarriorObject.FromJson<WarriorObject>(responseObjects[i].JsonObject.ToString());
+                        EnemySpawner.Instance.SpawnWarrior(wo);
                         break;
                 }
                 //StaticManager.ServerEvent.Publish(eventType);
