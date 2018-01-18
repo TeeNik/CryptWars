@@ -10,8 +10,9 @@ public class Field : MonoBehaviour
 {
 
     [SerializeField]
-    Transform spawnPoint;
-
+    Transform leftSpawn;
+    [SerializeField]
+    Transform rightSpawn;
     [SerializeField]
     private int fieldNumber;
 
@@ -27,7 +28,7 @@ public class Field : MonoBehaviour
     public void Spawn(WarriorObject wo)
     {
         GameInfo.CharacterType type = wo.Type;
-        var clone = Instantiate(ResourceManager.GetCharacter(type.ToString()), spawnPoint.position, spawnPoint.rotation);
+        var clone = Instantiate(ResourceManager.GetCharacter(type.ToString()), leftSpawn.position, leftSpawn.rotation);
         InitEnemy(clone, wo);
         WarriorManager.Instance.AddWarrior(clone.GetComponent<Character>());       
     }

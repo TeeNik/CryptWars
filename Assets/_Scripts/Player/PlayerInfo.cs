@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public class PlayerInfo : MonoBehaviour
 {
     public int Id;
+    public int FacingRight;
     int _coin;
     int _energy;
 
