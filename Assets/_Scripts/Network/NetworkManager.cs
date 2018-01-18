@@ -39,19 +39,10 @@ namespace Assets._Scripts.Network
 
         public void Auth()
         {
-            print("id: " + PlayerPrefs.GetInt("id"));
-            if(PlayerPrefs.GetInt("id") != 0)
-            {
                 int id = UnityEngine.Random.Range(10000000, 90000000);
                 PlayerPrefs.SetInt("id", id);
                 StaticManager.Instance.Player.Id = id;
-                SendAuth(id, "Yanchik");
-            } else
-            {
-                int id = PlayerPrefs.GetInt("id");
-                StaticManager.Instance.Player.Id = id;
-                SendAuth(id, "Yanchik");
-            }
+                SendAuth(id, "User_" + id);
         }
 
         private void SendAuth(int id, string nickname)
