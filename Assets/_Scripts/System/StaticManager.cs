@@ -14,6 +14,8 @@ namespace Assets._Scripts.System
 
         public static StaticManager Instance;
 
+        public static event Action<PlayerModel> OnPlayerUpdateEvent;
+
         void Awake()
         {
             Instance = this;

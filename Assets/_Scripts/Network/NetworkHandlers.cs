@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Assets._Scripts.CallbackObjects;
 using Assets._Scripts.Network;
+using Assets._Scripts.System;
 using Newtonsoft.Json;
 using UnityEngine;
 
@@ -67,7 +68,13 @@ public class NetworkHandlers : MonoBehaviour {
                 JsonObject = json
             }
         );
-    } 
+    }
+
+    public static void StartBattleEvent(ResponseObject r)
+    {
+        BattleFrameObject co = CallbackObject.FromJson<BattleFrameObject>(r.JsonObject.ToString());
+        StaticManager.Instance.Player.FacingRight = co.Ok;
+    }
 
     private static void SpawnEvent(ResponseObject r)
     {
