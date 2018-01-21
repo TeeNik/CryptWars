@@ -74,6 +74,7 @@ public class NetworkHandlers : MonoBehaviour {
     {
         BattleFrameObject co = CallbackObject.FromJson<BattleFrameObject>(r.JsonObject.ToString());
         StaticManager.Instance.Player.Init(co.player);
+        StaticManager.Instance.Opponent.Init(co.opponent);
     }
 
     private static void SpawnEvent(ResponseObject r)

@@ -28,7 +28,8 @@ public class Field : MonoBehaviour
     public void Spawn(WarriorObject wo)
     {
         GameInfo.CharacterType type = wo.Type;
-        var clone = Instantiate(ResourceManager.GetCharacter(type.ToString()), leftSpawn.position, leftSpawn.rotation);
+        Transform pos = wo.FacingRight ? leftSpawn : rightSpawn;
+        var clone = Instantiate(ResourceManager.GetCharacter(type.ToString()), pos.position, pos.rotation);
         InitEnemy(clone, wo);
         WarriorManager.Instance.AddWarrior(clone.GetComponent<Character>());       
     }
@@ -43,11 +44,13 @@ public class Field : MonoBehaviour
 
     private void SendSpawn()
     {
-        WarriorObject wo = new WarriorObject();
-        wo.PlayerId = StaticManager.Instance.Player.Id;
-        wo.Type = GameInfo.SpawnType;
-        wo.Line = fieldNumber;
-        wo.FacingRight = true;
+        WarriorObject wo = new WarriorObject
+        {
+            PlayerId = StaticManager.Instance.Player.Id,
+            Type = GameInfo.SpawnType,
+            Line = fieldNumber,
+            FacingRight = StaticManager.Instance.Player.PlayerModel.FacingRight
+        };
         JSONObject jsonObject = new JSONObject(wo.GetJson());
         NetworkManager.Instance.Send(NetworkCommands.SpawnWarrior.ToString(), jsonObject); 
     }

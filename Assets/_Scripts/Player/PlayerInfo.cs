@@ -10,14 +10,8 @@ public class PlayerInfo : MonoBehaviour
     public static event Action OnUpdatePlayerModelEvent ;
 
     public int Id;
-    public int FacingRight;
-    int _coin;
-    int _energy;
 
-    public GameObject Obj;
-    public Transform Place;
-
-    private PlayerModel _playerModel;
+    public PlayerModel PlayerModel;
 
     [SerializeField]
     private GameInfo.CharacterType[] _selectedWarriors;
@@ -29,12 +23,12 @@ public class PlayerInfo : MonoBehaviour
 
     public void Init(PlayerModel model)
     {
-        _playerModel = model;
+        PlayerModel = model;
     }
 
     public void UpdatePlayerFromServer(PlayerModel model)
     {
-        _playerModel.Hp = model.Hp;
-        _playerModel.Army = model.Army;
+        PlayerModel.Hp = model.Hp;
+        PlayerModel.Army = model.Army;
     }
 }

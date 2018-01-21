@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Assets._Scripts.CallbackObjects;
 using UnityEngine;
 
 public class PlayerModel : MonoBehaviour {
@@ -12,7 +13,7 @@ public class PlayerModel : MonoBehaviour {
     public int MaxMana;
     public int MoneySpeed;
     public int ManaSpeed;
-    public List<Warrior> Army;
+    public List<WarriorObject> Army;
 
     void AddGold(int value)
     {
