@@ -76,6 +76,7 @@ public class NetworkHandlers : MonoBehaviour {
         BattleFrameObject co = CallbackObject.FromJson<BattleFrameObject>(r.JsonObject.ToString());
         StaticManager.Instance.Player.Init(co.player);
         StaticManager.Instance.Opponent.Init(co.opponent);
+        print("This player is facing right: " + co.player.FacingRight);
     }
 
     private static void SpawnEvent(ResponseObject r)

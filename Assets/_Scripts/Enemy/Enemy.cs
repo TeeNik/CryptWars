@@ -32,10 +32,6 @@ public class Enemy : MonoBehaviour {
     void Update()
     {
         currentState.Execute();
-        LookAtTarger();
-
-        
-
     }
 
     public IEnumerator CheckMove()
@@ -65,18 +61,6 @@ public class Enemy : MonoBehaviour {
 
         currentState = newState;
         currentState.Enter(this);
-    }
-
-    private void LookAtTarger()
-    {
-        if(target != null)
-        {
-            float x = target.transform.position.x - transform.position.x;
-            if (x > 0 && facingRight || x < 0 && !facingRight)
-            {
-                ChangeDirection();
-            }
-        }
     }
 
     public void Move()
