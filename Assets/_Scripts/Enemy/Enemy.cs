@@ -26,7 +26,7 @@ public class Enemy : MonoBehaviour {
     {
         ChangeState(new MoveState());
 
-        StartCoroutine(checkMove());
+        StartCoroutine(CheckMove());
     }
 
     void Update()
@@ -38,7 +38,7 @@ public class Enemy : MonoBehaviour {
 
     }
 
-    public IEnumerator checkMove()
+    public IEnumerator CheckMove()
     {
         float dx = 0;
         for(int i = 0; i < 20; i++)

@@ -42,6 +42,7 @@ public class NetworkHandlers : MonoBehaviour {
                         break;
                     case NetworkCommands.StartBattle:
                         print("Start Battle");
+                        StartBattleEvent(responseObjects[i]);
                         break;
                     case NetworkCommands.SpawnWarrior:
                         SpawnEvent(responseObjects[i]);

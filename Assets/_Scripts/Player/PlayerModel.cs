@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Assets._Scripts.CallbackObjects;
 using UnityEngine;
 
-public class PlayerModel : MonoBehaviour {
+public class PlayerModel {
 
     public bool FacingRight;
     public int Hp;
