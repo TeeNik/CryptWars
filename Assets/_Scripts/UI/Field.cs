@@ -51,7 +51,6 @@ public class Field : MonoBehaviour
             Line = fieldNumber,
             FacingRight = StaticManager.Instance.Player.PlayerModel.FacingRight
         };
-        print("Spawn fr: " + wo.FacingRight);
         JSONObject jsonObject = new JSONObject(wo.GetJson());
         NetworkManager.Instance.Send(NetworkCommands.SpawnWarrior.ToString(), jsonObject); 
     }

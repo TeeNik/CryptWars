@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Assets._Scripts.CallbackObjects;
+using Assets._Scripts.System;
 using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.UI;
@@ -43,7 +44,9 @@ public class Character : MonoBehaviour
         _maxHealth = wo.MaxHp;
         _curHealth = _maxHealth;
         Id = wo.Id;
-        
+        if (StaticManager.Instance.Player.PlayerModel.FacingRight != wo.FacingRight)
+            gameObject.tag = "Enemy";
+        print(gameObject.tag);
     }
 
 }
